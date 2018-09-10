@@ -1,4 +1,3 @@
-@@ -0,0 +1,47 @@
 //From scratch clean code along file Javascript file for game function
 //https://matthewcranford.com/arcade-game-walkthrough-part-1-starter-code-breakdown/
 
@@ -28,15 +27,27 @@ Enemy.prototype.render = function(){
 
 //Player class, update, render,handleInput method, reset for collision of win. pick a character or find a way to let user choose character
 
+class Hero{
+	constructor(){
+		this.x = 0;
+		this.y = 0;
+		this.sprite = 'images/char-boy.png';
+	}
+	//does not need prototype because there is only one player, see drawing method provided for enemy, this grabs the player sprite and location which is initially set to 0,0 https://is.gd/JA9Zxy
+	render(){
+		ctx.drawImage(Resources.get(this.sprite), this.x, this.y);		
+	};
+}
+
+const player = new Hero();
+
 //Player Class
 	//Constructor Function
 		//Properties
 			// x position on the board
 			// y position on the board
 			//image of hero sprite
-			/*const Player = function(){
-				this.sprite= 'images/char-cat-girl.png';
-			};*/
+				//this.sprite= 'images/char-cat-girl.png';
 		//Methods
 			/*Player.prototype.update = function(dt){
 			};*/
@@ -51,7 +62,7 @@ Enemy.prototype.render = function(){
 			//how does the player respond to the manual input from the player? write handleInput() method
 			//Reset player for win or collision
 				//Set x and y to starting x and y values
-	
+
 //instatiate (create) your objects. 
 //Place all enemy objects in an array called allEnemies
 //Place the player object in a variable called player
