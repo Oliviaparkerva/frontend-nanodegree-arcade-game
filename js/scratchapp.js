@@ -3,8 +3,9 @@
 
 const Enemy = function(){
 	//x position
+	this.x = 0;
 	//y position
-	
+	this.y = 0;
 	//image
 		this.sprite= 'images/enemy-bug.png';
 };
@@ -29,16 +30,34 @@ Enemy.prototype.render = function(){
 
 class Hero{
 	constructor(){
-		this.x = 0;
-		this.y = 0;
+		this.x = 202; // board width divid 2 sub half sprite width to center
+		this.y = 445;//606-117 adjust for emoty space to get where you want sprites base
 		this.sprite = 'images/char-boy.png';
 	}
+	//update heros position based on key input
 	//does not need prototype because there is only one player, see drawing method provided for enemy, this grabs the player sprite and location which is initially set to 0,0 https://is.gd/JA9Zxy
+	//how do I keep plater conifned to board? disallow key press at certain coordinate?
 	render(){
 		ctx.drawImage(Resources.get(this.sprite), this.x, this.y);		
 	};
+	//how does our her respond to the key presses from the player? write handleInput() method	left37,up38,right39,down40, how big is each square, how far to advance with each key stroke?y 0-404, x 0-505
+	handleInput(input){
+		if(this.x > 0 && input == 'left'){
+			this.x -= 20;
+		}
+			else if (this.x < 403 && input == 'right'){
+				this.x += 20;
+			};
+		if(this.y > 0 && input == 'up'){
+			this.y -= 20;
+		}
+			else if (this.y < 434 && input == 'down'){
+				this.y += 20;
+			};
+		
+	};
 }
-
+//instatiate (create) your objects. 
 const player = new Hero();
 
 //Player Class
@@ -57,13 +76,10 @@ const player = new Hero();
 				/*Check for win function{
 					Has the player reached the top of the screen?	
 				}*/
-			/*Player.prototype.render = function(){ ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-			};*/			
-			//how does the player respond to the manual input from the player? write handleInput() method
+						
 			//Reset player for win or collision
 				//Set x and y to starting x and y values
 
-//instatiate (create) your objects. 
 //Place all enemy objects in an array called allEnemies
 //Place the player object in a variable called player
 
