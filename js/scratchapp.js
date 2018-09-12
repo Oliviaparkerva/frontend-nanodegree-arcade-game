@@ -1,33 +1,37 @@
 //From scratch clean code along file Javascript file for game function
 //https://matthewcranford.com/arcade-game-walkthrough-part-1-starter-code-breakdown/
 
-const Enemy = function(){
-	//x position
-	this.x = 0;
-	//y position
-	this.y = 0;
-	//image
-		this.sprite= 'images/enemy-bug.png';
-};
+//Enemy.prototype.update = function(dt){
+//	//Use provided code to automate the enemy sprites
+//	// You should multiply any movement by the dt parameter which will ensure the game runs at the same speed for all computers.
+//	/*Forward March function{
+//			if enemy is not passed right boundary{
+//				Move forward
+//				increment x by speed * dt
+//			}else
+//				Reset postion of enemy to left boundary
+//			*/
+//};
+//	
 
-Enemy.prototype.update = function(dt){
-	//Use provided code to automate the enemy sprites
-	// You should multiply any movement by the dt parameter which will ensure the game runs at the same speed for all computers.
-	/*Forward March function{
-			if enemy is not passed right boundary{
-				Move forward
-				increment x by speed * dt
-			}else
-				Reset postion of enemy to left boundary
-			*/
-};
-	
-Enemy.prototype.render = function(){
+class Enemy{
+	constructor(){
+		this.x = 0;
+		this.y = 0;
+		this.sprite = 'images/enemy-bug.png';
+	};
+	render(){
 		ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
+	};
+//	update(dt){
+//		
+//	}
+}
+
+
+
 
 //Player class, update, render,handleInput method, reset for collision of win. pick a character or find a way to let user choose character
-
 class Hero{
 	constructor(){
 		this.x = 202; // board width divid 2 sub half sprite width to center
@@ -40,7 +44,12 @@ class Hero{
 	render(){
 		ctx.drawImage(Resources.get(this.sprite), this.x, this.y);		
 	};
-	//how does our her respond to the key presses from the player? write handleInput() method	left37,up38,right39,down40, how big is each square, how far to advance with each key stroke?y 0-404, x 0-505
+	
+	
+	
+	
+	
+	//how does our her respond to the key presses from the player? write handleInput() method	left37,up38,right39,down40, how big is each square, how far to advance with each key stroke?y 0-404(505-101), x 0-435(606-171)
 	handleInput(input){
 		if(this.x > 0 && input == 'left'){
 			this.x -= 20;
@@ -59,7 +68,9 @@ class Hero{
 }
 //instatiate (create) your objects. 
 const player = new Hero();
-
+const bug1 = new Enemy();
+const allEnemies = [];
+allEnemies.push(bug1);
 //Player Class
 	//Constructor Function
 		//Properties
