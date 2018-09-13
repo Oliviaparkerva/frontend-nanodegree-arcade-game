@@ -10,22 +10,29 @@
 //				increment x by speed * dt
 //			}else
 //				Reset postion of enemy to left boundary
-//			*/
+//			increment speed for variation , use math for randomization if poosible
 //};
 //	
 
 class Enemy{
-	constructor(){
-		this.x = 0;
-		this.y = 0;
+	constructor(x,y,speed){
+		this.x = x;
+		this.y = y;
 		this.sprite = 'images/enemy-bug.png';
+		this.speed= speed;
+		
 	};
 	render(){
 		ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 	};
-//	update(dt){
-//		
-//	}
+//make it so bug moves by incrementing x by desired speed, reset bug offscreen so it looks like its walking bacl on instrad of spawning into square one, set right boundary off screen so bug fully disapears	
+	update(dt){
+		if(this.x < 505){
+			this.x += this.speed * dt;
+		}else{
+			this.x = -171;
+		}
+	};
 }
 
 
@@ -68,9 +75,11 @@ class Hero{
 }
 //instatiate (create) your objects. 
 const player = new Hero();
-const bug1 = new Enemy();
+const bug1 = new Enemy(-101,60,100);
+const bug2 = new Enemy(-101, 145, 60);
+const bug3 = new Enemy(-330, 145, 60);
 const allEnemies = [];
-allEnemies.push(bug1);
+allEnemies.push(bug1,bug2, bug3);
 //Player Class
 	//Constructor Function
 		//Properties
