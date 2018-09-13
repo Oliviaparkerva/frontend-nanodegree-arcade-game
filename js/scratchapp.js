@@ -14,6 +14,9 @@
 //};
 //	
 
+
+
+
 class Enemy{
 	constructor(x,y,speed){
 		this.x = x;
@@ -25,7 +28,7 @@ class Enemy{
 	render(){
 		ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 	};
-//make it so bug moves by incrementing x by desired speed, reset bug offscreen so it looks like its walking bacl on instrad of spawning into square one, set right boundary off screen so bug fully disapears	
+//make it so bug moves by incrementing x by desired speed, reset bug offscreen so it looks like its walking bacl on instrad of spawning into square one, set right boundary off screen so bug fully disapears, can I randomize the origins and speed to make the game harder each time, look back at matching game.
 	update(dt){
 		if(this.x < 505){
 			this.x += this.speed * dt;
@@ -43,7 +46,7 @@ class Hero{
 	constructor(){
 		this.x = 202; // board width divid 2 sub half sprite width to center
 		this.y = 445;//606-117 adjust for emoty space to get where you want sprites base
-		this.sprite = 'images/char-boy.png';
+		this.sprite = 'images/char-cat-girl.png';
 	}
 	//update heros position based on key input
 	//does not need prototype because there is only one player, see drawing method provided for enemy, this grabs the player sprite and location which is initially set to 0,0 https://is.gd/JA9Zxy
@@ -51,7 +54,18 @@ class Hero{
 	render(){
 		ctx.drawImage(Resources.get(this.sprite), this.x, this.y);		
 	};
-	
+//	https://is.gd/3Dwp1L  check for collision by matching absolute values of x and y for player and enemies including a type of margin for error that accounts for the size of the sprite. Add a modal for game over and reset the board.use setTimeout to return player to starting position
+	update(){
+		for(let bug of allEnemies){
+			var marg =70;
+			if ((Math.abs(this.y - bug.y) <= marg) && (Math.abs(this.x - bug.x) <= marg)) {
+				console.log('game over');
+				console.log(this.x, bug.x, this.y, bug.y);
+				this.x=202;
+				this.y=445;
+			}
+		}
+	};
 	
 	
 	
@@ -79,7 +93,13 @@ const bug1 = new Enemy(-101,60,100);
 const bug2 = new Enemy(-101, 145, 60);
 const bug3 = new Enemy(-330, 145, 60);
 const allEnemies = [];
-allEnemies.push(bug1,bug2, bug3);
+allEnemies.push(bug1,bug2,bug3);
+
+//Does x&y of bug in array = x and y of player variable? this is a collision https://is.gd/3Cbz9N
+
+	
+
+
 //Player Class
 	//Constructor Function
 		//Properties
@@ -106,7 +126,7 @@ allEnemies.push(bug1,bug2, bug3);
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this. Find keycodes here http://keycode.info/
 //https://api.jquery.com/keyup/
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keydown', function(e) {
     var allowedKeys = {
         37: 'left',
         38: 'up',
