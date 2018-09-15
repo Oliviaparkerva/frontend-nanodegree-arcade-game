@@ -16,7 +16,6 @@
 
 
 
-
 class Enemy{
 	constructor(x,y,speed){
 		this.x = x;
@@ -59,12 +58,11 @@ class Hero{
 		for(let bug of allEnemies){
 			var marg =70;
 			if ((Math.abs(this.y - bug.y) <= marg) && (Math.abs(this.x - bug.x) <= marg)) {
-				console.log('game over');
-				console.log(this.x, bug.x, this.y, bug.y);
 				this.x=202;
 				this.y=445;
 			}
 		}
+	
 	};
 	
 	
@@ -94,6 +92,11 @@ const bug2 = new Enemy(-101, 145, 60);
 const bug3 = new Enemy(-330, 145, 60);
 const allEnemies = [];
 allEnemies.push(bug1,bug2,bug3);
+var modal = document.getElementById ("myModal");
+var span = document.getElementsByClassName ("close");
+var btn = document.getElementById ("replay");
+
+
 
 //Does x&y of bug in array = x and y of player variable? this is a collision https://is.gd/3Cbz9N
 
@@ -136,3 +139,6 @@ document.addEventListener('keydown', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+
+

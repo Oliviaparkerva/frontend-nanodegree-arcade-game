@@ -18,15 +18,33 @@ var Engine = (function(global) {
      * create the canvas element, grab the 2D context for that canvas
      * set the canvas elements height/width and add it to the DOM.
      */
+
     var doc = global.document,
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        lastTime;
-
-    canvas.width = 505;
-    canvas.height = 606;
-    doc.body.appendChild(canvas);
+				lastTime,
+				myReq;
+				const modal = doc.querySelector('.modal');
+				const btn = doc.querySelector('.refresh-button');
+	
+    		canvas.width = 505;
+    		canvas.height = 606;
+    		doc.body.appendChild(canvas);
+	
+		function hideModal(){
+    	modal.style.display = 'none';
+		}
+		function refreshBoard(){
+			player.x = 202;
+			player.y = 445;
+			window.requestAnimationFrame(main);
+		}
+	
+		btn.addEventListener('click',function(){
+    refreshBoard();
+    hideModal();
+})
 
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
@@ -53,10 +71,20 @@ var Engine = (function(global) {
         lastTime = now;
 
         /* Use the browser's requestAnimationFrame function to call this
-         * function again as soon as the browser is able to draw another frame.
+         * function again as soon as the browser is able to draw another frame. https://is.gd/ncMDtV
          */
-        win.requestAnimationFrame(main);
+				if(player.y === 65){
+					console.log("Winner Winner");
+					win.cancelAnimationFrame(myReq);
+					modal.style.display =('block');
+				}else{ 
+        	myReq = win.requestAnimationFrame(main);
+				}
+				
+			
+				
     }
+	
 
     /* This function does some initial setup that should only occur once,
      * particularly setting the lastTime variable that is required for the
@@ -161,8 +189,11 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        // noop
-    }
+				requestAnimationFrame(main);
+				player.x = 202;
+				player.y = 445;
+				modal.style.display = ("none")
+		}
 
     /* Go ahead and load all of the images we know we're going to need to
      * draw our game level. Then set init as the callback method, so that when
