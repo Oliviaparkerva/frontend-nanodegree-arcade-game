@@ -27,7 +27,8 @@ var Engine = (function(global) {
 				myReq;
 				const modal = doc.querySelector('.modal');
 				const btn = doc.querySelector('.refresh-button');
-	
+				const close = doc.querySelector('.close');
+
     		canvas.width = 505;
     		canvas.height = 606;
     		doc.body.appendChild(canvas);
@@ -40,11 +41,13 @@ var Engine = (function(global) {
 			player.y = 445;
 			window.requestAnimationFrame(main);
 		}
-	
+		close.addEventListener('click', function(){
+			hideModal();
+		});
 		btn.addEventListener('click',function(){
-    refreshBoard();
-    hideModal();
-})
+    	refreshBoard();
+    	hideModal();
+		});
 
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
