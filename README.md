@@ -19,6 +19,13 @@ Hero
 	-handleInput function: Using the strings associated with keycodes move the player depending on where the sprite is. If x is on the board move left and right, same idea with y. Must subtract size of the sprite as the coordinates are based on the top left of the sprite so if capped at 505 it'd allow the sprite to go off the board up to that point. 0-404(505-101), x 0-435(606-171)
 	-Modal copied from old project see tutorial to make modal in useful links section below
 
+Winning
+	-The player wins when they reach the waters edge at the top of the canvas. 
+
+Loading the Game
+	-Open this link to the repository containing the code. https://is.gd/lR1DsO 
+	-To run the game locally download the zip files and open index.html file in your browser
+		
 Useful links:
 		-Walkthrough for arcade game build https://is.gd/zprBAo
 		-When to use prototypes https://is.gd/JA9Zxy  

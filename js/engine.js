@@ -75,8 +75,8 @@ var Engine = (function(global) {
 
         /* Use the browser's requestAnimationFrame function to call this
          * function again as soon as the browser is able to draw another frame. https://is.gd/ncMDtV
-         */
-				if(player.y === 65){
+         This is also the winner condition for when the water is reached based on the players y coordinate*/
+				if(player.y === 45){
 					console.log("Winner Winner");
 					win.cancelAnimationFrame(myReq);
 					modal.style.display =('block');
