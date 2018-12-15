@@ -1,10 +1,11 @@
-frontend-nanodegree-arcade-game
+# Arcade Game
 ===============================
 
-Front End Frogger ReadME
-Enemy
+## Arcade "frogger" game for Udacity FEND nanodegree program
+### How it's made:
+Enemy 
 	-Did not use prototypes because I dont have that many enemies. 
-	-Enemies created through and Enemy class constructor function, creates instances of enemies with location and speed as properties to add variety to enemies.
+	-Enemies created through an Enemy class constructor function, creates instances of enemies with location and speed as properties to add variety to enemies movements.
 	-Update the enemy's position. If the enemy is inside the board (<505) then increment the x by whatever the set speed is and multiply by the dt to create consistent movement. If the enemy moves off the board restart it off the board to the left based on width of sprite (-171)
 	-Render the enemy using provided function.
 
@@ -23,20 +24,21 @@ Winning
 	-The player wins when they reach the waters edge at the top of the canvas. 
 
 Loading the Game
-	-Open this link to the repository containing the code. https://is.gd/lR1DsO 
-	-To run the game locally download the zip files and open index.html file in your browser
-		
-Useful links:
-		-Walkthrough for arcade game build https://is.gd/zprBAo
-		-When to use prototypes https://is.gd/JA9Zxy  
-		-Keycodes http://keycode.info/
-		-Keyup https://api.jquery.com/keyup/	
-		-For...of to iterate through array of enemies https://is.gd/3Cbz9N
-		-How to make a modal https://is.gd/qhKpcL
-		-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
-		-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
 
-How to play
+[Open this link to the repository containing the code](https://is.gd/lR1DsO)
+
+To run the game locally download the zip files and open index.html file in your browser
+		
+### Useful links: 
+- [Walkthrough for arcade game build](https://is.gd/zprBAo)
+- [When to use prototypes](https://is.gd/JA9Zxy)
+- [Keycodes](http://keycode.info/)
+- [Keyup](https://api.jquery.com/keyup/)
+- [For...of to iterate through array of enemies](https://is.gd/3Cbz9N)
+- [How to make a modal](https://is.gd/qhKpcL)
+- [Students should use this [rubric]](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. (https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+
+### How to play
 	Your goal is to reach the row of stones before the river ahead. Dodge enemies and proceed forward across the game board by using the arrow keys. Running into an enemy will cause your character to be sent back to the begining of the board to try all over again. When you reach the  river winner winner. Will you play again?
 Bug Fixes
 
